@@ -23,7 +23,7 @@ const Header:FC<Props> = (props: Props) => {
                 <div className="absolute top-0 left-0 h-full w-full bg-black opacity-40 z-10"></div>
                 <div
                 className="grid place-items-center w-min h-full">
-                    <div className="whitespace-nowrap z-20 text-black px-4 py-4 opacity-75 bg-white">
+                    <div className="whitespace-nowrap z-20 text-black px-4 py-4 opacity-70 bg-white">
                         MCFC FAN CHANTS
                     </div>
                 </div>
