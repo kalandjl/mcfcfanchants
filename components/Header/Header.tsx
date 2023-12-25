@@ -13,7 +13,7 @@ const Header:FC<Props> = (props: Props) => {
 
 
             <div
-            className="h-32 px-14 py-6 font-mono text-3xl relative overflow-hidden">
+            className="bg-sky-300 h-32 px-14 py-6 font-mono text-3xl relative overflow-hidden">
                 <Image
                 className="absolute top-0 left-0 w-full"
                 src={"/header-backdrop.jpg"}
@@ -23,7 +23,7 @@ const Header:FC<Props> = (props: Props) => {
                 <div className="absolute top-0 left-0 h-full w-full bg-black opacity-40 z-10"></div>
                 <div
                 className="grid place-items-center w-min h-full">
-                    <div className="whitespace-nowrap z-20 text-sky-200">
+                    <div className="whitespace-nowrap z-20 text-black px-4 py-4 opacity-75 bg-white">
                         MCFC FAN CHANTS
                     </div>
                 </div>
