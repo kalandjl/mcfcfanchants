@@ -19,7 +19,7 @@
             <body
             className={`${inter.className} bg-gray-100`}>
                 <div
-                style={{"box-shadow": "0px 0px 10px rgba(50, 50, 50, 0.17);"}}
+                style={{boxShadow: "0px 0px 10px rgba(50, 50, 50, 0.17);"}}
                 className="mx-6 my-6 bg-white h-screen">
                     {children}
                 </div>
