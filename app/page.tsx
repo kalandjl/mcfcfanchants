@@ -1,12 +1,13 @@
 import Header from "@/components/Header/Header"
 import Nav from "@/components/Nav/Nav"
-import NavBar from "@/components/NavBar/NavBar"
+import Image from "@/node_modules/next/image"
+
 
 const Home = () => {
 
     return (
         <>
-            <Header />
+            <Header/>
             <Nav />
         </>
     )
