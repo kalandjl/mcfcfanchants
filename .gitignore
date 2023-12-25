@@ -20,9 +20,10 @@
 .DS_Store
 *.pem
 
-/.firebase
+.firebase/*
 
-/lib/firebase.ts
+config/*
+
 
 # debug
 npm-debug.log*
