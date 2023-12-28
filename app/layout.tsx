@@ -20,7 +20,7 @@
             className={`${inter.className} bg-gray-100`}>
                 <div
                 style={{boxShadow: "0px 0px 10px rgba(50, 50, 50, 0.17);"}}
-                className="mx-6 my-6 bg-white h-screen">
+                className="my-6 mx-48 bg-white">
                     {children}
                 </div>
             </body>
