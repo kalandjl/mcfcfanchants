@@ -22,7 +22,7 @@ const Chant:FC<Props> = (props: Props) => {
                         return (
                             <div id={i.toString()}>
                                 <p>
-                                    {line}
+                                    {line === "_" ? <span>&#8203;</span> : line}
                                 </p>
                             </div>
                         )
