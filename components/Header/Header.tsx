@@ -1,4 +1,5 @@
 import Image from "@/node_modules/next/image";
+import Link from "next/link";
 import { FC } from "react";
 
 
@@ -26,7 +27,9 @@ const Header:FC<Props> = (props: Props) => {
                     <div className="whitespace-nowrap z-20 text-black
                     ">
                         {/* CLASSES FOR ISLAND TITLE px-4 py-4 opacity-70 bg-white */}
-                        MCFC FAN CHANTS
+                        <Link href='/'>
+                            MCFC FAN CHANTS
+                        </Link>
                     </div>
                 </div>
             </div>

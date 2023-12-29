@@ -20,7 +20,7 @@ const Chant:FC<Props> = (props: Props) => {
                 className="grid grid-cols-1">
                     {props.lyrics.map((line, i) => {
                         return (
-                            <div id={i.toString()}>
+                            <div key={i}>
                                 <p>
                                     {line === "_" ? <span>&#8203;</span> : line}
                                 </p>
