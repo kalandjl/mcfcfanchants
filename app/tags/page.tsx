@@ -17,8 +17,9 @@ const Page = async () => {
         <>
             <div 
             className="grid grid-cols-2">
-                {tags.props.sortedTagCounts.map(tag => 
+                {tags.props.sortedTagCounts.map((tag, i) => 
                     <button
+                    key={i}
                     className="bg-sky-300 hover:bg-sky-400 p-2">
                         <Link 
                         href={`/tag/${tag.tag}`}>

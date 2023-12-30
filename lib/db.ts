@@ -78,3 +78,33 @@ export const countTagOccurrences = (tags: string[]): TagCount[] => {
 
     return tagCountArray;
 };
+
+export const getTags = async () => {
+
+    let data: string[]
+
+    const temp = async () => {
+        
+        const tags: any = await getDocs(collection(db, "Chants")).then(docs => {
+        
+            const unfilteredTags = docs.docs.map(doc => doc.data().tags)
+
+            return unfilteredTags.filter(tag =>  tag.length > 0).flat(1)
+        })
+    
+        data = await tags
+
+    }
+
+    await temp()
+
+    // @ts-ignore
+    const sortedTagCounts: TagCount[] = countTagOccurrences(data);
+
+
+    return {
+        props: {
+            sortedTagCounts
+        }
+    };
+}

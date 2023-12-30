@@ -2,7 +2,6 @@ import Image from "@/node_modules/next/image";
 import Link from "next/link";
 import { FC } from "react";
 
-
 interface Props {
 
 }
@@ -28,7 +27,22 @@ const Header:FC<Props> = (props: Props) => {
                     ">
                         {/* CLASSES FOR ISLAND TITLE px-4 py-4 opacity-70 bg-white */}
                         <Link href='/'>
-                            MCFC FAN CHANTS
+                            <div 
+                            className="flex gap-2">
+                                <div 
+                                id="logo-icon-container">
+                                     <Image
+                                    src="/logo-icon.png"
+                                    alt="Logo icon"
+                                    width={0}
+                                    height={0}
+                                    className="w-16 h-16 max-w-none" />  
+                                </div>
+                                <p
+                                className="grid place-items-center font-mono">
+                                    MCFC FAN CHANTS
+                                </p>
+                            </div>
                         </Link>
                     </div>
                 </div>
