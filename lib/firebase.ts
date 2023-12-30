@@ -4,7 +4,14 @@ import "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { firebaseConfig } from "@/config/firebase";
+import { getAuth } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const app = initializeApp(firebaseConfig)
 
 export const db = getFirestore(app)
+export const auth = getAuth()
+export const provider = new GoogleAuthProvider();
+
+
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
