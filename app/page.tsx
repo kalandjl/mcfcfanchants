@@ -7,10 +7,7 @@ const Home = () => {
     return (
         <>
             <div className="grid grid-cols-5">
-                <div className="col-span-3 m-5 ml-11 mt-10">
-                    <div className="mb-10">
-                        
-                    </div>
+                <div className="col-span-3">
                     <Chants />
                 </div>
             </div>

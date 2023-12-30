@@ -43,6 +43,12 @@ export default function RootLayout({
                                 {children}
                             </div>
                         </div>
+                        <div className="grid grid-cols-1 gap-6 col-span-2 p-10 h-min">
+                            <div className="h-64 bg-red-600 opacity-30"></div>
+                            <div className="bg-green-600 h-72 opacity-30"></div>
+                            <div className="bg-yellow-600 h-24 opacity-30"></div>
+                            <div className="bg-blue-600 h-72 opacity-30"></div>
+                        </div>
                     </div>
                 </div>
             </body>
