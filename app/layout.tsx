@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import Nav from '@/components/Nav'
 import Heading from '@/components/Heading'
 import RoutedText from '@/components/RoutedText'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,13 +24,14 @@ export default function RootLayout({
         <html lang="en">
             <body
             className={`${inter.className} bg-gray-100`}>
-                <div
+                <section
                 style={{boxShadow: "0px 0px 10px rgba(50, 50, 50, 0.17)"}}
-                className="my-6 mx-48 bg-white">
+                className="sm:my-6 md:my-6 lg:my-6 
+                md:mx-20 lg:mx-48 sm:mx-20  bg-white">
                     <Header />
                     <Nav />
                     <div className="grid grid-cols-5">
-                        <div className="col-span-3 m-5 ml-11 mt-10">
+                        <div className="m-5 ml-11 col-span-5 sm:col-span-5 md:col-span-3 lg:col-span-3">
                             <div className="mb-10">
                                 <Heading
                                 color="">
@@ -50,7 +52,8 @@ export default function RootLayout({
                             <div className="bg-blue-600 h-72 opacity-30"></div>
                         </div>
                     </div>
-                </div>
+                    <Footer />
+                </section>
             </body>
         </html>
     )
