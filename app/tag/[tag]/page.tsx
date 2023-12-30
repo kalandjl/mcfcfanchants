@@ -10,23 +10,23 @@ export async function generateStaticParams() {
     
     let data
 
-            const temp = async () => {
-                
-                const stuff: any = await getDocs(collection(db, "Chants")).then(docs => {
-                
-                    const unfilteredTags = docs.docs.map(doc => doc.data().tags)
+    const temp = async () => {
+        
+        const tags: any = await getDocs(collection(db, "Chants")).then(docs => {
+        
+            const unfilteredTags = docs.docs.map(doc => doc.data().tags)
+
+            return unfilteredTags.filter(tag =>  tag.length > 0).flat(1)
+        })
     
-                    return unfilteredTags.filter(tag =>  tag.length > 0).flat(1)
-                })
-            
-                data = await stuff
+        data = await tags
 
-            }
+    }
 
-            await temp()
+    await temp()
 
-            // @ts-ignore
-            return data.map((tag:any)=>{return {tag:tag}})
+    // @ts-ignore
+    return data.map((tag:any)=>{return {tag:tag}})
 }
 
 const Tag = ({ params }: any) => {
