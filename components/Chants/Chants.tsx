@@ -4,18 +4,22 @@ import { FC, useEffect } from "react";
 import Chant from "../Chant/Chant";
 import chants from "../../lib/chants.json"
 import { useCollection } from "react-firebase-hooks/firestore";
-import { collection } from "firebase/firestore";
+import { WhereFilterOp, collection, query, where } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { s } from "@/lib/db";
 
 interface Props {
-
+    queryProps?: [string, WhereFilterOp, string]
 }
 
 const Chants: FC<Props> = (props: Props) => {
 
+    const { queryProps } = props
+
     const [value, loading, error] = useCollection(
-        collection(db, 'Chants'),
+        queryProps ? 
+        query(collection(db, 'Chants'), where(queryProps[0], queryProps[1], queryProps[2])) 
+        : collection(db, 'Chants'), 
         {
           snapshotListenOptions: { includeMetadataChanges: true },
         }

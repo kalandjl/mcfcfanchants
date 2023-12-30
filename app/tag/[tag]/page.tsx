@@ -1,3 +1,4 @@
+import Chants from "@/components/Chants";
 import { db } from "@/lib/firebase"
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { usePathname } from "next/navigation";
@@ -29,15 +30,13 @@ export async function generateStaticParams() {
 }
 
 const Tag = ({ params }: any) => {
+
     const { tag, slug } = params;
 
     return (
         <>
-            <p>Tag: {tag}</p>
-            <p>Slugs:</p>
-            <ul>
-                
-            </ul>
+            <Chants 
+            queryProps={["tags", "array-contains", tag]} />
         </>
     );
 };
