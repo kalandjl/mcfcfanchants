@@ -1,9 +1,9 @@
-import Chants from "@/components/Chants/Chants"
+import Chants from "@/components/Chants"
 import Heading from "@/components/Heading/Heading"
-
 
 const Home = () => {
 
+    
     return (
         <>
             <div className="grid grid-cols-5">
@@ -11,7 +11,6 @@ const Home = () => {
                     <Chants />
                 </div>
             </div>
-
         </>
     )
 }

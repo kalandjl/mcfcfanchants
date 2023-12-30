@@ -14,7 +14,7 @@ const Home = () => {
         {
           snapshotListenOptions: { includeMetadataChanges: true },
         }
-      );
+    );
     let user = useAuthState(auth)
     let uid = user[0]?.uid
 
