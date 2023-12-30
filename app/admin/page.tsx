@@ -3,7 +3,8 @@
 import { auth, db, provider } from "@/lib/firebase"
 import { signInWithPopup, signOut } from "firebase/auth"
 import { GoogleAuthProvider } from "firebase/auth/cordova"
-import { collection } from "firebase/firestore"
+import { collection, getDocs, query, where } from "firebase/firestore"
+import { useEffect } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useCollection } from "react-firebase-hooks/firestore"
 
@@ -17,6 +18,33 @@ const Home = () => {
     );
     let user = useAuthState(auth)
     let uid = user[0]?.uid
+
+    useEffect(() => {
+        
+        const f = async () => {
+            let data
+
+            const temp = async () => {
+                
+                const stuff: any = await getDocs(collection(db, "Chants")).then(docs => {
+                
+                    const unfilteredTags = docs.docs.map(doc => doc.data().tags)
+    
+                    return unfilteredTags.filter(tag =>  tag.length > 0).flat(1)
+                })
+            
+                data = await stuff
+
+            }
+
+            await temp()
+
+            // @ts-ignore
+            data.map((tag:any)=>{return {tag:tag}})
+
+        }
+        f()
+    })
 
     return (
         <>
