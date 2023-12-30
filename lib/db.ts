@@ -59,21 +59,22 @@ export type TagCount = {
 
 
 export const countTagOccurrences = (tags: string[]): TagCount[] => {
+    
     const tagCounts: { [key: string]: number } = {};
-  
+
     // Count occurrences of each tag
     tags.forEach((tag) => {
-      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
     });
-  
+
     // Convert to array of TagCount objects
     const tagCountArray: TagCount[] = Object.keys(tagCounts).map((tag) => ({
-      tag,
-      chants: tagCounts[tag],
+    tag,
+    chants: tagCounts[tag],
     }));
-  
-    // Sort the array by tag name
-    tagCountArray.sort((a, b) => a.tag.localeCompare(b.tag));
-  
+
+    // Sort the array by the number of chants in descending order
+    tagCountArray.sort((a, b) => b.chants - a.chants);
+
     return tagCountArray;
 };

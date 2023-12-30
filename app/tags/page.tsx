@@ -15,7 +15,7 @@ const Page = async () => {
         <>
             {tags.props.sortedTagCounts.map(tag => 
                 <>
-                    {tag.tag}
+                    {tag.tag + tag.chants}
                 </>
             )}
         </>
