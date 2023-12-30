@@ -31,7 +31,7 @@ export default function RootLayout({
                     <Header />
                     <Nav />
                     <div className="grid grid-cols-5">
-                        <div className="m-5 ml-11 col-span-5 sm:col-span-5 md:col-span-3 lg:col-span-3">
+                        <div className="m-5 mt-10 ml-11 col-span-5 sm:col-span-5 md:col-span-3 lg:col-span-3">
                             <div className="mb-10">
                                 <Heading
                                 color="">

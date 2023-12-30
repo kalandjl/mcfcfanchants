@@ -9,7 +9,7 @@ interface Props {
 const Nav: FC<Props> = (props: Props) => {
 
 
-    const links = ['About', 'Chants', 'Submit']
+    const links = ['About', 'Chants', 'Submit', 'Tags']
 
     return (
         <>
