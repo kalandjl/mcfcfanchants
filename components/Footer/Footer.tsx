@@ -4,28 +4,20 @@ import { TagCount, getTags } from "@/lib/db";
 import { capitalizeEachWord } from "@/lib/strings";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
-
+import useSWR from "swr";
+ 
 interface Props {
 
 }
 
-type TagsState = null | {props: { sortedTagCounts: TagCount[] }}
+const fetcher = async (...args: any) => {
+
+    return await getTags()
+}
 
 const Footer: FC<Props> = (props: Props) => {
 
-    const [tags, setTags] = useState<TagsState>(null)
-    const [tagsIsLoading, setTagsLoading] = useState<boolean>(true)
-
-    useEffect(() => {
-
-        getTags()
-          .then(res => {
-
-            setTags(res)
-            setTagsLoading(false)
-          })
-    }, [])
-
+    const { data, error } = useSWR('undefined', fetcher)
 
     return (
         <>  
@@ -57,16 +49,27 @@ const Footer: FC<Props> = (props: Props) => {
                         className="bg-sky-300 h-min text-black grid place-items-center">
                             <p
                             className="w-full px-4 py-3 font-open-sans text-sm font-bold">
+                                PAGES
+                            </p>
+                        </div>
+                    </div>
+                    <div 
+                    className="grid grid-cols-1">
+                        <div
+                        // style={{boxShadow: "-5px 5px 2px rgba(31, 53, 105, .8)"}}
+                        className="bg-sky-300 h-min text-black grid place-items-center">
+                            <p
+                            className="w-full px-4 py-3 font-open-sans text-sm font-bold">
                                 TAGS
                             </p>
                         </div>
                         <div
                             className="mt-5">
                                 {
-                                    tagsIsLoading ? 
+                                    false ? 
                                     <></>
                                     : <>
-                                    {tags?.props.sortedTagCounts.map((tag: TagCount, i) => 
+                                    {data?.props.sortedTagCounts.map((tag: TagCount, i: number) => 
                                     <Link
                                     key={i}
                                     href={`/tag/${tag.tag}`}>
@@ -79,17 +82,6 @@ const Footer: FC<Props> = (props: Props) => {
                                     </>
                                 }
                             </div>
-                    </div>
-                    <div 
-                    className="grid grid-cols-1">
-                        <div
-                        // style={{boxShadow: "-5px 5px 2px rgba(31, 53, 105, .8)"}}
-                        className="bg-sky-300 h-min text-black grid place-items-center">
-                            <p
-                            className="w-full px-4 py-3 font-open-sans text-sm font-bold">
-                                PAGES
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
