@@ -1,50 +1,23 @@
-"use client"
-
-import { FC, useEffect } from "react";
-import Chant from "../Chant/Chant";
-import chants from "../../lib/chants.json"
-import { useCollection } from "react-firebase-hooks/firestore";
-import { WhereFilterOp, collection, query, where } from "firebase/firestore";
-import { db } from "@/lib/firebase";
-import { s } from "@/lib/db";
+import { FC } from "react";
+import { WhereFilterOp } from "firebase/firestore";
+import getChants from "@/utils/getChants";
 
 interface Props {
-    queryProps?: [string, WhereFilterOp, string]
+    queryProps?: [string, WhereFilterOp, string],
+    limit: number
 }
 
-const Chants: FC<Props> = (props: Props) => {
+const Chants: FC<Props> = async (props: Props) => {
 
-    const { queryProps } = props
+    const { queryProps, limit } = props
 
-    const [value, loading, error] = useCollection(
-        queryProps ? 
-        query(collection(db, 'Chants'), where(queryProps[0], queryProps[1], queryProps[2])) 
-        : collection(db, 'Chants'), 
-        {
-          snapshotListenOptions: { includeMetadataChanges: true },
-        }
-    );
+    const chants = await getChants(limit, queryProps ?? undefined)
 
     return (
         <>
-            <div className="grid grid-cols-1 gap-12">
-                {error && <strong>Error: {JSON.stringify(error)}</strong>}
-                {loading && <span>Collection: Loading...</span>}
-                {value && value.docs.map((doc, i) => {
-
-                    let data = doc.data()
-                    return (
-                    <div key={i}>
-                        <Chant
-                        title={data.title}
-                        // @ts-ignore
-                        lyrics={data.lyrics}
-                        // @ts-ignore
-                        tags={data.tags}/>
-                    </div>
-                    )
-                })}
-            </div>
+            {chants.map(chant => <>
+                {chant.data().title}
+            </>)}
         </>
     )
 }

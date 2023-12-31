@@ -31,7 +31,7 @@ export async function generateStaticParams() {
 
 const Tag = ({ params }: any) => {
 
-    const { tag, slug } = params;
+    const { tag } = params;
 
     return (
         <>
