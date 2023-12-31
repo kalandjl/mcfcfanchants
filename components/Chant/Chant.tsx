@@ -11,7 +11,7 @@ const Chant:FC<Props> = (props: Props) => {
     return (
         <>
             <div
-            className="grid grid-col-1 gap-1">
+            className="grid grid-col-1 gap-1 bg-gray-100 p-3">
                 <p
                 className="font-bold">
                     {props.title}
