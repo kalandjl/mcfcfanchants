@@ -26,26 +26,37 @@ export default function RootLayout({
             className={`${inter.className} bg-gray-100`}>
                 <section
                 style={{boxShadow: "0px 0px 10px rgba(50, 50, 50, 0.17)"}}
-                className="sm:my-6 md:my-6 lg:my-6 
-                md:mx-20 lg:mx-48 sm:mx-20  bg-white">
+                className="
+                sm:my-0 md:my-6 lg:my-6 
+                sm:mx-0 md:mx-16 lg:mx-24 xl:mx-32 2xl:mx-40
+                bg-white">
                     <Header />
                     <Nav />
                     <div className="grid grid-cols-5">
-                        <div className="m-5 mt-10 ml-11 col-span-5 sm:col-span-5 md:col-span-3 lg:col-span-3">
-                            <div className="mb-10">
-                                <Heading
-                                color="">
-                                    <>
-                                        <RoutedText />
-                                    </>
-                                </Heading>
+                        <div className="m-5 mt-10 ml-11 col-span-5 
+                        2sm:col-span-5 1sm:col-span-5 sm:col-span-5 md:col-span-5 lg:col-span-3">
+                            <div 
+                            className="mb-10 static 
+                            ">
+                                <div 
+                                id="header-container"
+                                className='w-full'>
+                                    <Heading
+                                    color="">
+                                        <>
+                                            <RoutedText />
+                                        </>
+                                    </Heading>
+                                </div>
                                 <div 
                                 id="margin"
                                 className="h-16"></div>
                                 {children}
                             </div>
                         </div>
-                        <div className="grid grid-cols-1 gap-6 col-span-2 p-10 h-min">
+                        <div className="grid grid-cols-1 gap-6 p-10 h-min
+                        2xsm:col-span-2 xsm:col-span-0 sm:col-span-0 md:col-span-1 lg:col-span-2 xl:col-span-2 2xl:col-span-2
+                        2xsm:block xsm:block sm:hidden md:block lg:block xl:block 2xl:block">
                             <div className="h-64 bg-red-600 opacity-30"></div>
                             <div className="bg-green-600 h-72 opacity-30"></div>
                             <div className="bg-yellow-600 h-24 opacity-30"></div>
