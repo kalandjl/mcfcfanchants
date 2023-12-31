@@ -6,7 +6,7 @@ const getChants = cache(async (limitProps: number, queryProps? : [string, WhereF
 
     const chantsRef = collection(db, "Chants")
     let docsRef
-    
+
     if (queryProps && limitProps) {
         
         docsRef = query(

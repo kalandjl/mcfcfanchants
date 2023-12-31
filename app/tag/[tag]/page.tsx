@@ -20,7 +20,6 @@ export async function generateStaticParams() {
         })
     
         data = await tags
-
     }
 
     await temp()
@@ -36,7 +35,8 @@ const Tag = ({ params }: any) => {
     return (
         <>
             <Chants 
-            queryProps={["tags", "array-contains", tag]} />
+            queryProps={["tags", "array-contains", tag]} 
+            limit={10}/>
         </>
     );
 };
