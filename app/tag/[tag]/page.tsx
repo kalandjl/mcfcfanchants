@@ -6,27 +6,27 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 // Your generateStaticParams function
-export async function generateStaticParams() {
+// export async function generateStaticParams() {
     
-    let data
+//     let data
 
-    const temp = async () => {
+//     const temp = async () => {
         
-        const tags: any = await getDocs(collection(db, "Chants")).then(docs => {
+//         const tags: any = await getDocs(collection(db, "Chants")).then(docs => {
         
-            const unfilteredTags = docs.docs.map(doc => doc.data().tags)
+//             const unfilteredTags = docs.docs.map(doc => doc.data().tags)
 
-            return unfilteredTags.filter(tag =>  tag.length > 0).flat(1)
-        })
+//             return unfilteredTags.filter(tag =>  tag.length > 0).flat(1)
+//         })
     
-        data = await tags
-    }
+//         data = await tags
+//     }
 
-    await temp()
+//     await temp()
 
-    // @ts-ignore
-    return data.map((tag:any)=>{return {tag:tag}})
-}
+//     // @ts-ignore
+//     return data.map((tag:any)=>{return {tag:tag}})
+// }
 
 const Tag = ({ params }: any) => {
 

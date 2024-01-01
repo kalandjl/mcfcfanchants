@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
     images: { unoptimized: true },
     env: {
         // "API_KEY":"AIzaSyByrcUgER6GSSg-fdnrTwZgYhXKk9LNpt4",
