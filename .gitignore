@@ -22,7 +22,6 @@
 
 .firebase/*
 
-config/*
 
 # debug
 npm-debug.log*

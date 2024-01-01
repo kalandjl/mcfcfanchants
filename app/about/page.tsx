@@ -1,3 +1,5 @@
+"use client"
+import { firebaseConfig } from "@/config/firebase"
 
 
 const Home = () => {
