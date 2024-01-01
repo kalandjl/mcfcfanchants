@@ -4,7 +4,8 @@ const Home = () => {
 
     return (
         <>
-            <Chants />
+            <Chants 
+            limit={10}/>
         </>
     )
 }

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 4000",
     "lint": "next lint",
     "git-sync": "git pull && git checkout master -f && git branch --set-upstream-to origin/master",
     "deploy": "npm run build && firebase deploy",

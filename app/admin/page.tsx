@@ -93,7 +93,9 @@ const Home = () => {
                             {value && (
                             <span>
                                 <p
-                                className="font-semibold">Submissions:</p>
+                                className="font-semibold">
+                                    Submissions:
+                                </p>
                                 <div className="grid grid-cols-1 gap-2">
                                     {value.docs.map((doc, i) => (
                                     <div 
