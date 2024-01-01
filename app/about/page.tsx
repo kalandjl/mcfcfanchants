@@ -1,6 +1,6 @@
-"use client"
 
-const About = () => {
+
+const Home = () => {
 
     return (
         <>
@@ -31,4 +31,4 @@ quasi aliquam eligendi, placeat qui corporis!
     )
 }
 
-export default About
+export default Home

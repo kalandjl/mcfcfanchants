@@ -8,8 +8,7 @@ const Home = () => {
         <>
             <div className="grid grid-cols-5">
                 <div className="col-span-3">
-                    <Chants 
-                    limit={10} />
+                    <Chants />
                 </div>
             </div>
         </>

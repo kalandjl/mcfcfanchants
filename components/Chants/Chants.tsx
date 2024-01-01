@@ -16,17 +16,17 @@ const Chants: FC<Props> = async (props: Props) => {
 
     return (
         <>
-            {chants.map((chant, i) => {
+            {chants.map(chant => {
             
             let data = chant.data()
             return (
-                <div key={i}>
+                <>
                     <Chant
                     title={data.title}
                     lyrics={data.lyrics}
                     tags={data.tags}
                     />
-                </div>
+                </>
             )
             })}
         </>
