@@ -14,8 +14,6 @@ const Page = () => {
                 try {
                     const res = await signInWithPopup(auth, provider)
 
-                    let { user } = res
-    
                     const credential = GoogleAuthProvider.credentialFromResult(res);
                     const token = credential?.accessToken
                 } catch (e) {
@@ -30,7 +28,7 @@ const Page = () => {
                     const credential = GoogleAuthProvider.credentialFromError(e);
                 }
             }}>
-                Sign in
+                Sign Up
             </button> 
         </>
     )

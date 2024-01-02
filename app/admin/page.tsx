@@ -15,9 +15,9 @@ const Home = () => {
         {
           snapshotListenOptions: { includeMetadataChanges: true },
         }
-    );
-    let [user] = useAuthState(auth)
+    )
 
+    let [ user ] = useAuthState(auth)
 
     useEffect(() => {
         

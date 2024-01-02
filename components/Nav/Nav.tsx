@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
+import NavAuthClient from "./NavAuthClient";
 
 
 interface Props {
@@ -36,20 +36,7 @@ const Nav: FC<Props> = (props: Props) => {
                             </Link>
                             ))}
                         </div>
-                        <div
-                        className="flex gap-4 pr-8 text-white">
-                            <Link
-                            href="/sign-in"
-                            className="hover:underline">
-                                Sign in
-                            </Link>
-                            <Link
-                            href="/sign-up"
-                            className="hover:underline">
-                                Sign up
-                            </Link>
-                        </div>
-
+                        <NavAuthClient />
                     </div>
                 </div>
             </div>
