@@ -16,8 +16,8 @@ const Home = () => {
           snapshotListenOptions: { includeMetadataChanges: true },
         }
     );
-    let user = useAuthState(auth)
-    let uid = user[0]?.uid
+    let [user] = useAuthState(auth)
+
 
     useEffect(() => {
         
@@ -50,7 +50,7 @@ const Home = () => {
         <>
             <div 
             className="grid grid-cols-1">
-                {user[0] ?   
+                {user ?   
                 <button 
                 className="hover:bg-sky-400 bg-sky-300 p-3 w-1/4 rounded-md"
                 onClick={() => {
@@ -86,7 +86,7 @@ const Home = () => {
                 }
                 <div className="mt-10">
                     {
-                        uid === "Sdg6vjfAerUd1v6K5MdiPoopOKu1" ? 
+                        user?.uid === "Sdg6vjfAerUd1v6K5MdiPoopOKu1" ? 
                         <>
                             {error && <strong>Error: {JSON.stringify(error)}</strong>}
                             {loading && <span>Collection: Loading...</span>}
