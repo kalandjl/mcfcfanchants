@@ -1,11 +1,16 @@
 "use client"
-import { addChant } from "@/lib/db"
-import { auth } from "@/lib/firebase"
+import { addSubmission } from "@/lib/db"
+import { auth, db } from "@/lib/firebase"
+import { collection, doc, getDoc, query, where } from "@firebase/firestore"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { useRef } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 
 const Home = () => {
+
+    const router = useRouter()
+    const path = usePathname()
 
     const email  = useRef(null)
     const title = useRef(null)
@@ -23,24 +28,32 @@ const Home = () => {
                         Chant suggestions:
                     </p>
                     <form 
-                    action=""
                     className="grid grid-cols-1 gap-5 rounded-sm bg-sky-300 p-10 mt-5 font-mono"
-                    onSubmit={e => {
+                    onSubmit={async e => {
 
                         e.preventDefault()
                         
                         if(!email.current || !title.current || !lyrics.current) return window.Error("Missing values")
                         // @ts-ignore
                         if(!email.current.value || !title.current || !lyrics.current) return window.Error("Missing values")
-                        
-                        addChant(
+                        if (!user) return window.Error("Authentication error")
+
+                        const docRef = doc(db, "Users", user.uid)
+                        const userRef = await getDoc(docRef)
+
+                        await addSubmission(
                             // @ts-ignore
                             email.current.value,
                             // @ts-ignore
                             title.current.value,
                             // @ts-ignore
-                            lyrics.current.value
+                            lyrics.current.value,
+                            user.uid,
+                            userRef.data()?.lastReq,
                         )
+
+                        // @ts-ignore
+                        window.location.replace('/')
                     }}>
                         <div>
                             <label 

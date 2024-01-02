@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "mcfcfanchants-2fece"
-  }
+    "default": "mcfcfanchants-2fece",
+    "mcfcfanchants": "mcfcfanchants-2fece"
+  },
+  "targets": {},
+  "etags": {}
 }

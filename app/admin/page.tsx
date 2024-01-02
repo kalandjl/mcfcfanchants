@@ -3,7 +3,7 @@
 import { auth, db, provider } from "@/lib/firebase"
 import { signInWithPopup, signOut } from "firebase/auth"
 import { GoogleAuthProvider } from "firebase/auth/cordova"
-import { collection, getDocs, query, where } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore"
 import { useEffect } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useCollection } from "react-firebase-hooks/firestore"
@@ -88,6 +88,24 @@ const Home = () => {
                     {
                         user?.uid === "Sdg6vjfAerUd1v6K5MdiPoopOKu1" ? 
                         <>
+                            <button
+                            className="hover:bg-sky-400 bg-sky-300 p-3 w-1/4 rounded-md"
+                            onClick={async e => {
+
+                                try {
+                                    
+                                    const docs = await getDocs(collection(db, "Submissions"))
+                                    docs.forEach(async i => {
+
+                                        await deleteDoc(doc(db, "Submissions", i.id))
+                                    })
+                                } catch (e) {
+
+                                    console.error(e)
+                                }
+                            }}>
+                                Delete submissions
+                            </button> 
                             {error && <strong>Error: {JSON.stringify(error)}</strong>}
                             {loading && <span>Collection: Loading...</span>}
                             {value && (

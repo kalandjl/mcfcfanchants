@@ -2,18 +2,33 @@ import { Timestamp, addDoc, collection, getDocs, query } from "firebase/firestor
 import { db } from "./firebase"
 import chants from "../lib/chants.json"  
 
-export const addChant = async (email: string, title: string, lyrics: string) => {
+export const addSubmission = async (email: string, title: string, lyrics: string, uid: string, userLastReq: Timestamp) => {
 
     try {
-        
+
+        console.log({
+            email: email,
+            title: title, 
+            lyrics: lyrics,
+            date: Timestamp.now(),
+            uid: uid,
+            userLastReq: userLastReq
+        })
+
+
+
         const docRef = await addDoc(collection(db, "Submissions"), {
             email: email,
             title: title, 
             lyrics: lyrics,
-            date: Timestamp.now()
+            date: Timestamp.now(),
+            uid: uid,
+            userLastReq: userLastReq
         })
+
+        console.log(docRef)
         
-        window.alert("Suggestion sent!")
+        console.log("Suggestion sent!")
     } catch (e) {
         window.Error("Error sending suggestion, " + e)
     }

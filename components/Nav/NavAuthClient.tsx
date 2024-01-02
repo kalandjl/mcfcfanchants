@@ -13,7 +13,6 @@ interface Props {
 const NavAuthClient:FC<Props> = (props: Props) => {
 
     const [user, loading, error] = useAuthState(auth);    
-    console.log(user)
 
     return (
         <>
