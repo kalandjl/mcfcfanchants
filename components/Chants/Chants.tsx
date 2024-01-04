@@ -1,35 +1,29 @@
-import { FC } from "react";
+
+import { FC, useState } from "react";
 import { WhereFilterOp } from "firebase/firestore";
 import getChants from "@/utils/getChants";
 import Chant from "../Chant";
+import offlineChants from "@/lib/offlineChants";
+import ChantPages from "./ChantPages";
 
 interface Props {
-    queryProps?: [string, WhereFilterOp, string],
     limit: number
+    queryProps?: [string, WhereFilterOp, string],
+    offline?: boolean
+    pageLimit?: number
 }
+
+export const revalidate = 3600
 
 const Chants: FC<Props> = async (props: Props) => {
 
     const { queryProps, limit } = props
+    const pageLimit = props.pageLimit ?? 5
 
-    const chants = await getChants(limit, queryProps ?? undefined)
+    const chants: any = props.offline ? undefined : await (await getChants(limit, queryProps ?? undefined)).map(chant => chant.data())
 
     return (
-        <>
-            {chants.map(chant => {
-            
-            let data = chant.data()
-            return (
-                <>
-                    <Chant
-                    title={data.title}
-                    lyrics={data.lyrics}
-                    tags={data.tags}
-                    />
-                </>
-            )
-            })}
-        </>
+        <ChantPages props={props} chants={chants ?? []} />
     )
 }
 

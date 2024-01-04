@@ -1,7 +1,7 @@
-"use client"
 
 import { TagCount, getTags } from "@/lib/db";
 import { capitalizeEachWord } from "@/lib/strings";
+import getTagsCached from "@/utils/getTags";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import useSWR from "swr";
@@ -10,14 +10,11 @@ interface Props {
 
 }
 
-const fetcher = async (...args: any) => {
+export const revalidate = 3600
 
-    return await getTags()
-}
+const Footer: FC<Props> = async (props: Props) => {
 
-const Footer: FC<Props> = (props: Props) => {
-
-    const { data, error } = useSWR('undefined', fetcher)
+    const data = await getTagsCached()
 
     return (
         <>  

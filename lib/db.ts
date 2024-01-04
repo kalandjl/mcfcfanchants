@@ -6,17 +6,6 @@ export const addSubmission = async (email: string, title: string, lyrics: string
 
     try {
 
-        console.log({
-            email: email,
-            title: title, 
-            lyrics: lyrics,
-            date: Timestamp.now(),
-            uid: uid,
-            userLastReq: userLastReq
-        })
-
-
-
         const docRef = await addDoc(collection(db, "Submissions"), {
             email: email,
             title: title, 
@@ -26,8 +15,6 @@ export const addSubmission = async (email: string, title: string, lyrics: string
             userLastReq: userLastReq
         })
 
-        console.log(docRef)
-        
         console.log("Suggestion sent!")
     } catch (e) {
         window.Error("Error sending suggestion, " + e)

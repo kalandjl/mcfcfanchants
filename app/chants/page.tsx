@@ -5,7 +5,8 @@ const Home = () => {
     return (
         <>
             <Chants 
-            limit={1000}/>
+            limit={1000} 
+            pageLimit={10} />
         </>
     )
 }

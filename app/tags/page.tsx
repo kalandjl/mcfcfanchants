@@ -1,6 +1,6 @@
 import { TagCount } from '@/lib/db'
 import { capitalizeEachWord } from '@/lib/strings'
-import getTags from '@/utils/getTags'
+import getTagsCached from '@/utils/getTags'
 import Link from 'next/link'
 
 export const revalidate = 3600
@@ -11,7 +11,7 @@ const Page = async () => {
         props: {
             sortedTagCounts: TagCount[];
         };
-    } = await getTags()
+    } = await getTagsCached()
 
     return (
         <>
