@@ -23,7 +23,6 @@ interface Props {
 const ChantPages = (props: Props) => {
 
     const { chants } = props 
-    const { queryProps, limit } = props.props
     const pageLimit = props.props.pageLimit ?? 5
 
     // Memoize value of pages numbers

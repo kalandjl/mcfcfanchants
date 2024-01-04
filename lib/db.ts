@@ -6,7 +6,7 @@ export const addSubmission = async (email: string, title: string, lyrics: string
 
     try {
 
-        const docRef = await addDoc(collection(db, "Submissions"), {
+        await addDoc(collection(db, "Submissions"), {
             email: email,
             title: title, 
             lyrics: lyrics,
