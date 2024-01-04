@@ -26,6 +26,10 @@ const ChantPages = (props: Props) => {
         return Math.ceil((chants.length / pageLimit))
     }, [pageLimit, chants.length]) 
 
+    const lastPageChants= useMemo(() => {
+        return chants.length % pageLimit || pageLimit
+    }, [pageLimit, chants.length])
+
     // Current page
     let [page, setPage] = useState(1)
     let [pageChanges, setPageChanges] = useState(0)
@@ -41,13 +45,13 @@ const ChantPages = (props: Props) => {
         <>
             <div
             id="chants">
-                {Array(pageLimit).fill(0).map((y, i) => 
+                {Array(pageNumber).fill(0).map((y, i) => 
                     <div 
                     key={i} 
                     id={`page-${i + 1}`}
                     className={`${page === i + 1 ? "static": "hidden"}`}>
                         {
-                            Array(pageLimit).fill(0)
+                            Array(i === pageLimit - 1 ? pageLimit - lastPageChants : pageLimit).fill(0)
                                 .map((x, y) => {
 
                                     const index = ((i + 1) * pageLimit) - (pageLimit - y)
