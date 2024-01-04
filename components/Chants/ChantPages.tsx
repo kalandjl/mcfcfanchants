@@ -3,15 +3,11 @@ import { DocumentSnapshot, WhereFilterOp } from "firebase/firestore"
 import Chant from "../Chant"
 import offlineChants from "@/lib/offlineChants";
 import { ReactNode, useEffect, useMemo, useState } from "react";
+import { ChantType } from "./chant";
 
-interface Chant {
-    title: string
-    lyrics: string[]
-    tags: string[]
-}
 
 interface Props {
-    chants: Chant[]
+    chants: ChantType[]
     props: {
         limit: number
         queryProps?: [string, WhereFilterOp, string],

@@ -1,9 +1,5 @@
 import Chants from "@/components/Chants";
-import { db } from "@/lib/firebase"
-import { collection, getDocs, query, where } from "firebase/firestore"
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import getChants from "@/utils/getChants";
 
 // Your generateStaticParams function
 // export async function generateStaticParams() {
@@ -28,15 +24,20 @@ import { useEffect } from "react";
 //     return data.map((tag:any)=>{return {tag:tag}})
 // }
 
-const Tag = ({ params }: any) => {
+export const revalidate = 3600
+
+const Tag = async ({ params }: any) => {
 
     const { tag } = params;
+    const limit = 10
+
+    const chants: any = (await getChants(limit, ["tags", "array-contains", tag])).map(chant => chant.data())
 
     return (
         <>
             <Chants 
-            queryProps={["tags", "array-contains", tag]} 
-            limit={10}/>
+            limit={limit}
+            manualChants={chants}/>
         </>
     );
 };

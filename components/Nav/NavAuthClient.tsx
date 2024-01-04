@@ -25,9 +25,11 @@ const NavAuthClient:FC<Props> = (props: Props) => {
                         onClick={e => {
                             signOut(auth)
                         }}
-                        className="hover:cursor-pointer"
+                        className="hover:cursor-pointer flex"
                         type="submit">
-                            Logout <Logout />
+                            <p>Logout</p> 
+                            <div className="w-2"></div>
+                            <Logout />
                         </button>     
                     </form>
                 </> :

@@ -5,6 +5,8 @@ import getTagsCached from "@/utils/getTags";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import useSWR from "swr";
+import FooterTags from "./FooterTags";
+import FooterPages from "./FooterPages";
  
 interface Props {
 
@@ -23,7 +25,7 @@ const Footer: FC<Props> = async (props: Props) => {
                 <div 
                 className="grid grid-cols-3 gap-6">
                     <div 
-                    className="grid grid-cols-1">
+                    className="flex flex-col">
                         <div
                         // style={{boxShadow: "-5px 5px 2px rgba(31, 53, 105, .8)"}}
                         className="bg-sky-300 mb-5 text-black grid place-items-center h-min">
@@ -40,7 +42,7 @@ const Footer: FC<Props> = async (props: Props) => {
                         </p>
                     </div>
                     <div 
-                    className="grid grid-cols-1">
+                    className="flex flex-col">
                         <div
                         // style={{boxShadow: "-5px 5px 2px rgba(31, 53, 105, .8)"}}
                         className="bg-sky-300 h-min text-black grid place-items-center">
@@ -49,9 +51,13 @@ const Footer: FC<Props> = async (props: Props) => {
                                 PAGES
                             </p>
                         </div>
+
+                        <div className="mt-5">
+                            <FooterPages />
+                        </div>
                     </div>
                     <div 
-                    className="grid grid-cols-1">
+                    className="flex flex-col">
                         <div
                         // style={{boxShadow: "-5px 5px 2px rgba(31, 53, 105, .8)"}}
                         className="bg-sky-300 h-min text-black grid place-items-center">
@@ -61,24 +67,9 @@ const Footer: FC<Props> = async (props: Props) => {
                             </p>
                         </div>
                         <div
-                            className="mt-5">
-                                {
-                                    false ? 
-                                    <></>
-                                    : <>
-                                    {data?.props.sortedTagCounts.map((tag: TagCount, i: number) => 
-                                    <Link
-                                    key={i}
-                                    href={`/tag/${tag.tag}`}>
-                                        <div 
-                                        className="inline-block bg-black py-1 px-2 text-white mr-1 mb-2 text-sm font-open-sans font-bold hover:cursor-pointer hover:bg-sky-500">
-                                            {capitalizeEachWord(tag.tag).replace("_", " ")}
-                                        </div>
-                                    </Link>
-                                    )}
-                                    </>
-                                }
-                            </div>
+                        className="mt-5">
+                            <FooterTags />
+                        </div>
                     </div>
                 </div>
             </div>
