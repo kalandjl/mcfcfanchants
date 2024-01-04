@@ -28,14 +28,18 @@ const ChantPages = (props: Props) => {
     // Memoize value of pages numbers
     const pageNumber = useMemo(() => {
         return Math.ceil((chants.length / pageLimit))
-    }, [props.props.pageLimit, props.props.limit]) 
+    }, [pageLimit, chants.length]) 
 
     // Current page
     let [page, setPage] = useState(1)
+    let [pageChanges, setPageChanges] = useState(0)
 
     // Scroll to top of window on page change
     useEffect(() => {
+        
+        if (pageChanges === 0) return
         window.scrollTo(0, 200);
+        setPageChanges(pageChanges + 1)
     }, [page]);
 
     console.log(pageNumber)
