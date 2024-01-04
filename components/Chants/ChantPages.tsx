@@ -37,12 +37,10 @@ const ChantPages = (props: Props) => {
     // Scroll to top of window on page change
     useEffect(() => {
         
-        if (pageChanges === 0) return
-        window.scrollTo(0, 200);
+        if (pageChanges > 0) window.scrollTo(0, 200)
         setPageChanges(pageChanges + 1)
     }, [page]);
 
-    console.log(pageNumber)
     return (
         <>
             <div
