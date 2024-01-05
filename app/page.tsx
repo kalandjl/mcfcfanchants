@@ -12,7 +12,8 @@ const Home = () => {
                 <div className="col-span-5">
                     <Chants
                     limit={chants} 
-                    pageLimit={chants} />
+                    pageLimit={chants}
+                    chantLinked={true} />
                     <Link
                     href="/chants">
                         <div className="mt-5">

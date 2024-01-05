@@ -5,6 +5,7 @@ interface Chant {
     title: string
     lyrics: string[]
     tags: string[]
+    id: string
 }
 
 interface Props {

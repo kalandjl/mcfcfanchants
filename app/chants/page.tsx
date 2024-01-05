@@ -6,7 +6,8 @@ const Home = () => {
         <>
             <Chants 
             limit={1000} 
-            pageLimit={10} />
+            pageLimit={10}
+            chantLinked={true} />
         </>
     )
 }

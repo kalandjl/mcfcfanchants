@@ -13,6 +13,7 @@ const Header:FC<Props> = (props: Props) => {
 
 
             <div
+            id="header"
             className="bg-sky-300 h-32 px-14 py-6 font-mono text-3xl relative overflow-hidden">
                 {/* <Image
                 className="absolute top-0 left-0 w-full"
@@ -32,6 +33,7 @@ const Header:FC<Props> = (props: Props) => {
                                 <div 
                                 id="logo-icon-container">
                                      <Image
+                                     id="logo"
                                     src="/logo-icon.png"
                                     alt="Logo icon"
                                     width={0}
@@ -39,6 +41,7 @@ const Header:FC<Props> = (props: Props) => {
                                     className="w-16 h-16 max-w-none" />  
                                 </div>
                                 <p
+                                id="website text"
                                 className="grid place-items-center font-mono">
                                     MCFC FAN CHANTS
                                 </p>

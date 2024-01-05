@@ -34,7 +34,8 @@ const Footer: FC<Props> = async (props: Props) => {
                 grid gap-6">
                     <div 
                     className="flex flex-col 
-                    sm:hidden md:block">
+                    sm:hidden md:block"
+                    id="footer-contact-section">
                         <div
                         // style={{boxShadow: "-5px 5px 2px rgba(31, 53, 105, .8)"}}
                         className="bg-sky-300 mb-5 text-black grid place-items-center h-min">
@@ -52,7 +53,8 @@ const Footer: FC<Props> = async (props: Props) => {
                         )}
                     </div>
                     <div 
-                    className="flex flex-col">
+                    className="flex flex-col"
+                    id="footer-pages-section">
                         <div
                         // style={{boxShadow: "-5px 5px 2px rgba(31, 53, 105, .8)"}}
                         className="bg-sky-300 h-min text-black grid place-items-center">
@@ -67,7 +69,8 @@ const Footer: FC<Props> = async (props: Props) => {
                         </div>
                     </div>
                     <div 
-                    className="flex flex-col">
+                    className="flex flex-col"
+                    id="footer-tags-section">
                         <div
                         // style={{boxShadow: "-5px 5px 2px rgba(31, 53, 105, .8)"}}
                         className="bg-sky-300 h-min text-black grid place-items-center">

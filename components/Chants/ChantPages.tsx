@@ -3,7 +3,8 @@ import { DocumentSnapshot, WhereFilterOp } from "firebase/firestore"
 import Chant from "../Chant"
 import offlineChants from "@/lib/offlineChants";
 import { ReactNode, useEffect, useMemo, useState } from "react";
-import { ChantType } from "./chant";
+import { ChantType } from "./type";
+import Link from "next/link";
 
 
 interface Props {
@@ -13,12 +14,14 @@ interface Props {
         queryProps?: [string, WhereFilterOp, string],
         offline?: boolean
         pageLimit?: number
+        chantLinked?: boolean
     }
 }
 
 const ChantPages = (props: Props) => {
 
     const { chants } = props 
+    const chantLinked = props.props.chantLinked ?? false
     const pageLimit = props.props.pageLimit ?? 5
 
     // Memoize value of pages numbers
@@ -61,6 +64,16 @@ const ChantPages = (props: Props) => {
 
                                     return (
                                         chant ? 
+                                        chantLinked ?
+                                        <Link
+                                        href={`/chant/${chant.id}`} 
+                                        key={i}>
+                                            <Chant
+                                            title={chant.title ?? ""}
+                                            lyrics={chant.lyrics ?? []}
+                                            tags={chant.tags ?? []}
+                                            />
+                                        </Link> :
                                         <div key={i}>
                                             <Chant
                                             title={chant.title ?? ""}
