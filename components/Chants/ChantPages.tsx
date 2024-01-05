@@ -3,8 +3,9 @@ import { DocumentSnapshot, WhereFilterOp } from "firebase/firestore"
 import Chant from "../Chant"
 import offlineChants from "@/lib/offlineChants";
 import { ReactNode, useEffect, useMemo, useState } from "react";
-import { ChantType } from "./type";
+import { ChantType } from "./types";
 import Link from "next/link";
+import { ChangeCircleTwoTone } from "@mui/icons-material";
 
 
 interface Props {
@@ -69,16 +70,12 @@ const ChantPages = (props: Props) => {
                                         href={`/chant/${chant.id}`} 
                                         key={i}>
                                             <Chant
-                                            title={chant.title ?? ""}
-                                            lyrics={chant.lyrics ?? []}
-                                            tags={chant.tags ?? []}
+                                            chant={chant}
                                             />
                                         </Link> :
                                         <div key={i}>
                                             <Chant
-                                            title={chant.title ?? ""}
-                                            lyrics={chant.lyrics ?? []}
-                                            tags={chant.tags ?? []}
+                                            chant={chant}
                                             />
                                         </div> : 
                                         <div id="no-chant" key={i}></div>

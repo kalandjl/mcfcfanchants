@@ -4,4 +4,5 @@ export interface ChantType {
     lyrics: string[]
     tags: string[]
     id: string
+    audioHref?: string
 }

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { WhereFilterOp } from "firebase/firestore";
 import getChants from "@/utils/getChants";
 import ChantPages from "./ChantPages";
-import { ChantType } from "./type";
+import { ChantType } from "./types";
 
 interface Props {
     limit: number

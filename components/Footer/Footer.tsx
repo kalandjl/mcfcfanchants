@@ -7,17 +7,13 @@ import { FC, useEffect, useState } from "react";
 import useSWR from "swr";
 import FooterTags from "./FooterTags";
 import FooterPages from "./FooterPages";
+import { contacts } from "@/lib/contact";
  
 interface Props {
 
 }
 
 export const revalidate = 3600
-
-const contacts = [
-    "mcfcfanchants@gmail.com",
-    "604-710-0331"
-]
 
 const Footer: FC<Props> = async (props: Props) => {
 
