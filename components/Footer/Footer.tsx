@@ -14,6 +14,11 @@ interface Props {
 
 export const revalidate = 3600
 
+const contacts = [
+    "mcfcfanchants@gmail.com",
+    "604-710-0331"
+]
+
 const Footer: FC<Props> = async (props: Props) => {
 
     const data = await getTagsCached()
@@ -21,11 +26,15 @@ const Footer: FC<Props> = async (props: Props) => {
     return (
         <>  
             <div 
-            className="bg-zinc-800 min-h-32 pl-6 pr-24 py-6 font-mono text-white">
+            id="footer"
+            className="bg-zinc-800 min-h-32 sm:pr-6 md:pr-14 pl-6 lg:pr-24 py-6 font-mono text-white">
                 <div 
-                className="grid grid-cols-3 gap-6">
+                className="
+                sm:grid-cols-2 md:grid-cols-3
+                grid gap-6">
                     <div 
-                    className="flex flex-col">
+                    className="flex flex-col 
+                    sm:hidden md:block">
                         <div
                         // style={{boxShadow: "-5px 5px 2px rgba(31, 53, 105, .8)"}}
                         className="bg-sky-300 mb-5 text-black grid place-items-center h-min">
@@ -34,12 +43,13 @@ const Footer: FC<Props> = async (props: Props) => {
                                 CONTACT
                             </p>
                         </div>
-                        <p>
-                            mcfcfanchants@gmail.com
-                        </p>
-                        <p>
-                            604-710-0331
-                        </p>
+                        {contacts.map((contact, i) => 
+                            <p
+                            key={i}
+                            className="md:text-sm lg:text-md">
+                                {contact}
+                            </p>
+                        )}
                     </div>
                     <div 
                     className="flex flex-col">

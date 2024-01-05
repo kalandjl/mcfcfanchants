@@ -36,13 +36,14 @@ export default function RootLayout({
                 style={{boxShadow: "0px 0px 10px rgba(50, 50, 50, 0.17)"}}
                 className="
                 sm:my-0 md:my-6 lg:my-6 
-                sm:mx-0 md:mx-16 lg:mx-24 xl:mx-32 2xl:mx-40
+                sm:mx-0 md:mx-8 lg:mx-14 xl:mx-26 2xl:mx-40
+                2xsm:hidden xsm:hidden sm:block md:block lg:block xl:block 2xl:block
                 bg-white">
                     <Header />
                     <Nav />
                     <div className="grid grid-cols-5">
-                        <div className="m-5 mt-10 ml-11 col-span-5 
-                        2sm:col-span-5 1sm:col-span-5 sm:col-span-5 md:col-span-5 lg:col-span-3">
+                        <div className="m-5 mt-10 ml-11
+                        2sm:col-span-5 1sm:col-span-5 sm:col-span-5 md:col-span-3 lg:col-span-3 xl:col-span-3 2xl:col-span-3">
                             <div 
                             className="mb-10 static 
                             ">
@@ -62,8 +63,8 @@ export default function RootLayout({
                                 {children}
                             </div>
                         </div>
-                        <div className="grid grid-cols-1 gap-6 p-10 h-min
-                        2xsm:col-span-2 xsm:col-span-0 sm:col-span-0 md:col-span-1 lg:col-span-2 xl:col-span-2 2xl:col-span-2
+                        <div className="flex flex-col gap-5 p-10 
+                        2xsm:col-span-2 xsm:col-span-0 sm:col-span-0 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2
                         2xsm:block xsm:block sm:hidden md:block lg:block xl:block 2xl:block">
                             <div className="h-64 bg-red-600 opacity-30"></div>
                             <div className="bg-green-600 h-72 opacity-30"></div>
@@ -72,6 +73,12 @@ export default function RootLayout({
                         </div>
                     </div>
                     <Footer />
+                </section>
+                <section
+                id="mobile_header"
+                className="h-screen p-2
+                2xsm:block xsm:block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
+                    <p className='w-min whitespace-nowrap'>Not currently avaliable on mobile</p>
                 </section>
             </body>
         </html>
