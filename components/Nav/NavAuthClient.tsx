@@ -1,6 +1,7 @@
 "use client"
 import { auth } from "@/lib/firebase";
 import { Logout, LogoutOutlined, LogoutTwoTone } from "@mui/icons-material";
+import { CircularProgress } from "@mui/material";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { FC, useState } from "react";
@@ -29,7 +30,7 @@ const NavAuthClient:FC<Props> = (props: Props) => {
         <>
             <div
             className="flex gap-4 pr-8 text-white">
-                {user?.uid ? 
+                {user ? 
                 <>
                     <form action="" className="">
                         <button
@@ -44,19 +45,26 @@ const NavAuthClient:FC<Props> = (props: Props) => {
                         </button>     
                     </form>
                 </> :
-                <div
+                loading ? 
+                <div className="absolute h-full right-0 px-3 bg-sky-500 sm:text-sm md:text-md grid place-items-center">
+                    <div>
+                        <CircularProgress  
+                        className="w-5 h-5 text-white"/>
+                    </div>
+                </div> 
+                : <div
                 className="flex py-2 bg-sky-500 absolute right-0 gap-5 px-3">
                     {
-                    signedOutLinks.map((item, i) => 
-                        <>
-                            <Link
-                            key={i}
-                            href={item.href}
-                            className={`hover:underline sm:text-sm md:text-md`}>
-                                {item.text}
-                            </Link>
-                        </>
-                    )
+                        signedOutLinks.map((item, i) => 
+                            <>
+                                <Link
+                                key={i}
+                                href={item.href}
+                                className={`hover:underline sm:text-sm md:text-md`}>
+                                    {item.text}
+                                </Link>
+                            </>
+                        )
                     }
                 </div> 
                 }
