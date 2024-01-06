@@ -39,7 +39,7 @@ const Chant:FC<Props> = (props: Props) => {
                     </a> : <></>
                     }
                 </div>
-            </div> : <div className="grid">Sorry, couldn't load chant</div>
+            </div> : <div className="grid">Sorry, couldn&apos;t load chant</div>
             }
         </>
     )
