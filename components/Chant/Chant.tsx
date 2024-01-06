@@ -33,6 +33,7 @@ const Chant:FC<Props> = (props: Props) => {
                     {chant.audioHref ? 
                     <a
                     href={chant.audioHref}
+                    target="_blank"
                     className="text-sky-600 hover:underline underline-offset-1">
                         Audio File
                     </a> : <></>

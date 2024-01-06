@@ -1,10 +1,6 @@
 
-import { TagCount, getTags } from "@/lib/db";
-import { capitalizeEachWord } from "@/lib/strings";
 import getTagsCached from "@/utils/getTags";
-import Link from "next/link";
 import { FC, useEffect, useState } from "react";
-import useSWR from "swr";
 import FooterTags from "./FooterTags";
 import FooterPages from "./FooterPages";
 import { contacts } from "@/lib/contact";

@@ -63,13 +63,15 @@ export default function RootLayout({
                                 {children}
                             </div>
                         </div>
-                        <div className="flex flex-col gap-5 p-10 
+                        <div 
+                        id="ads"
+                        className="flex flex-col gap-5 p-10 
                         2xsm:col-span-2 xsm:col-span-0 sm:col-span-0 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2
                         2xsm:block xsm:block sm:hidden md:block lg:block xl:block 2xl:block">
-                            <div className="h-64 bg-red-600 opacity-30"></div>
+                            { /* <div className="h-64 bg-red-600 opacity-30"></div>
                             <div className="bg-green-600 h-72 opacity-30"></div>
                             <div className="bg-yellow-600 h-24 opacity-30"></div>
-                            <div className="bg-blue-600 h-72 opacity-30"></div>
+                            <div className="bg-blue-600 h-72 opacity-30"></div> */}
                         </div>
                     </div>
                     <Footer />

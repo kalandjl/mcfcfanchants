@@ -120,7 +120,10 @@ const Home = () => {
                     </form>
                 </> :
                 <>
-                    <p>Must be have an account in order to submit chants</p> 
+                    <p
+                    className="font-bold">
+                        Must be have an account in order to suggest chants:
+                        </p> 
                     <Link href="/sign-in">
                         <p
                         className="text-blue-500 underline">
