@@ -1,0 +1,47 @@
+import { capitalizeEachWord } from "@/lib/strings";
+import classNames from "classnames";
+import cx from 'classnames';
+import Link from "next/link";
+import { FC } from "react";
+
+interface Props {
+    href: string
+    text: string
+    template: string
+}
+
+const templates = {
+    "footer": {
+        bg: "black",
+        color: "white", 
+        hover: "sky-400"
+    },
+    "chant": {
+        bg: "sky-400",
+        color: "black",
+        hover: "sky-500",
+    }
+}
+
+const CloudLink: FC<Props> = (props: Props) => {
+
+    const { href, text, template} = props
+    // @ts-ignore
+    const { bg, color, hover } = templates[template]
+
+    return (
+        <>
+            <Link
+            href={href}>
+                <div 
+                className={classNames(`inline-block  py-1 px-2 mr-1 mb-2 text-sm 
+                font-open-sans font-bold hover:cursor-pointer
+                bg-${bg} text-${color} hover:bg-${hover}`)}>
+                    {capitalizeEachWord(text).replace("_", " ")}
+                </div>
+            </Link>
+        </>
+    )
+}
+
+export default CloudLink

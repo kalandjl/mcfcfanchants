@@ -39,7 +39,8 @@ const Tag = async ({ params }: any) => {
             <Chants 
             limit={limit}
             manualChants={chants}
-            chantLinked={true} />
+            chantLinked={true}
+            showTags />
         </>
     );
 };

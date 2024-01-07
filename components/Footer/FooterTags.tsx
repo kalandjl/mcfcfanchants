@@ -3,6 +3,7 @@ import { capitalizeEachWord } from "@/lib/strings";
 import getTagsCached from "@/utils/getTags";
 import Link from "next/link";
 import { FC } from "react";
+import CloudLink from "../CloudLink";
 
 interface Props {
     
@@ -21,14 +22,11 @@ const FooterTags: FC<Props> = async (props: Props) => {
             <></>
             : <>
             {data?.props.sortedTagCounts.map((tag: TagCount, i: number) => 
-                <Link
+                <CloudLink 
                 key={i}
-                href={`/tag/${tag.tag}`}>
-                    <div 
-                    className="inline-block bg-black py-1 px-2 text-white mr-1 mb-2 text-sm font-open-sans font-bold hover:cursor-pointer hover:bg-sky-500">
-                        {capitalizeEachWord(tag.tag).replace("_", " ")}
-                    </div>
-                </Link>
+                text={tag.tag}
+                href={`/tag/${tag.tag}`}
+                template="footer" />
             )}
             </>
             }

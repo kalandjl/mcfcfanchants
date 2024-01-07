@@ -1,8 +1,10 @@
 import { FC } from "react"
 import { ChantType } from "../Chants/types"
+import CloudLink from "../CloudLink"
 
 interface Props {
     chant: ChantType
+    showTags: boolean
 }
 
 const Chant:FC<Props> = (props: Props) => {
@@ -38,6 +40,17 @@ const Chant:FC<Props> = (props: Props) => {
                         Audio File
                     </a> : <></>
                     }
+                    {props.showTags ? 
+                    <div className="w-1/2 mt-3">
+                        {chant.tags.map((tag, i) => 
+                        <CloudLink 
+                        key={i}
+                        href={`/tag/${tag}`}
+                        text={tag}
+                        template="chant"
+                        />)}
+                    </div> 
+                    : <></>}
                 </div>
             </div> : <div className="grid">Sorry, couldn&apos;t load chant</div>
             }

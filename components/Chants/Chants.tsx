@@ -4,17 +4,18 @@ import getChants from "@/utils/getChants";
 import ChantPages from "./ChantPages";
 import { ChantType } from "./types";
 
-interface Props {
+export interface ChantsProps {
     limit: number
     queryProps?: [string, WhereFilterOp, string],
     pageLimit?: number
     manualChants?: ChantType[]
     chantLinked?: boolean
+    showTags?: boolean
 }
 
 export const revalidate = 3600
 
-const Chants: FC<Props> = async (props: Props) => {
+const Chants: FC<ChantsProps> = async (props: ChantsProps) => {
 
     const { queryProps, limit } = props
 

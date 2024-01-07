@@ -6,22 +6,21 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 import { ChantType } from "./types";
 import Link from "next/link";
 import { ChangeCircleTwoTone } from "@mui/icons-material";
+import { ChantsProps } from "./Chants";
+import { useRouter } from "next/navigation";
 
 
 interface Props {
     chants: ChantType[]
-    props: {
-        limit: number
-        queryProps?: [string, WhereFilterOp, string],
-        offline?: boolean
-        pageLimit?: number
-        chantLinked?: boolean
-    }
+    props: ChantsProps
 }
 
 const ChantPages = (props: Props) => {
 
+    const router = useRouter()
+
     const { chants } = props 
+    const showTags  = props.props.showTags ?? false
     const chantLinked = props.props.chantLinked ?? false
     const pageLimit = props.props.pageLimit ?? 5
 
@@ -41,7 +40,7 @@ const ChantPages = (props: Props) => {
     // Scroll to top of window on page change
     useEffect(() => {
         
-        if (pageChanges > 0) window.scrollTo(0, 200)
+        if (pageChanges > 0 && pageNumber > 1) window.scrollTo(0, 200)
         setPageChanges(pageChanges + 1)
     }, [page]);
 
@@ -66,16 +65,21 @@ const ChantPages = (props: Props) => {
                                     return (
                                         chant ? 
                                         chantLinked ?
-                                        <Link
-                                        href={`/chant/${chant.id}`} 
+                                        <div
+                                        className="hover:cursor-pointer"
+                                        onClick={() => {
+                                            router.replace(`/chant/${chant.id}`)
+                                        }}
                                         key={i}>
                                             <Chant
                                             chant={chant}
+                                            showTags={showTags}
                                             />
-                                        </Link> :
+                                        </div> :
                                         <div key={i}>
                                             <Chant
                                             chant={chant}
+                                            showTags={showTags}
                                             />
                                         </div> : 
                                         <div id="no-chant" key={i}></div>

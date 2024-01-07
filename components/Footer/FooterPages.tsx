@@ -1,6 +1,7 @@
 import { capitalizeEachWord } from "@/lib/strings";
 import Link from "next/link";
 import { FC } from "react";
+import CloudLink from "../CloudLink";
 
 interface Props {
 
@@ -51,14 +52,11 @@ const FooterPages: FC<Props> = (props: Props) => {
     return (
         <>
             {links.map((obj, i) => 
-                <Link
+                <CloudLink
                 key={i}
-                href={obj.link}>
-                    <div 
-                    className="inline-block bg-black py-1 px-2 text-white mr-1 mb-2 text-sm font-open-sans font-bold hover:cursor-pointer hover:bg-sky-500">
-                        {obj.text}
-                    </div>
-                </Link>
+                href={obj.link}
+                text={obj.text}
+                template="footer" />
             )}
         </>
     )
