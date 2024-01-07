@@ -17,9 +17,9 @@ const templates = {
         hover: "sky-400"
     },
     "chant": {
-        bg: "sky-400",
+        bg: "sky-300",
         color: "black",
-        hover: "sky-500",
+        hover: "sky-400",
     }
 }
 
@@ -37,7 +37,7 @@ const CloudLink: FC<Props> = (props: Props) => {
                 className={classNames(`inline-block  py-1 px-2 mr-1 mb-2 text-sm 
                 font-open-sans font-bold hover:cursor-pointer
                 bg-${bg} text-${color} hover:bg-${hover}`)}>
-                    {capitalizeEachWord(text).replace("_", " ")}
+                    {capitalizeEachWord(text.replaceAll("_", " "))}
                 </div>
             </Link>
         </>
