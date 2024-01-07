@@ -11,6 +11,7 @@ export interface ChantsProps {
     manualChants?: ChantType[]
     chantLinked?: boolean
     showTags?: boolean
+    chantsCollapsed?: boolean
 }
 
 export const revalidate = 3600

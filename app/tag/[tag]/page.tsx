@@ -29,7 +29,7 @@ export const revalidate = 3600
 const Tag = async ({ params }: any) => {
 
     const { tag } = params;
-    const limit = 10
+    const limit = 100
 
     const chants: any = (await getChants(limit, ["tags", "array-contains", tag]))
         .map(chant => ({...chant.data(), id: chant.id}))

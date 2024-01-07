@@ -16,6 +16,7 @@ const Tag = async ({ params }: any) => {
             <Chants 
             limit={limit}
             manualChants={chants}
+            chantsCollapsed={false}
             showTags />
         </>
     );

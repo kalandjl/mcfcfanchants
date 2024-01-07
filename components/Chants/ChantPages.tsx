@@ -9,17 +9,16 @@ import { ChangeCircleTwoTone } from "@mui/icons-material";
 import { ChantsProps } from "./Chants";
 import { useRouter } from "next/navigation";
 
-
 interface Props {
-    chants: ChantType[]
-    props: ChantsProps
+    chants: ChantType[] // Data
+    props: ChantsProps // Specific param
 }
 
 const ChantPages = (props: Props) => {
 
-    const router = useRouter()
-
+    // Defining params
     const { chants } = props 
+    const { chantsCollapsed } = props.props
     const showTags  = props.props.showTags ?? false
     const chantLinked = props.props.chantLinked ?? false
     const pageLimit = props.props.pageLimit ?? 5
@@ -29,6 +28,7 @@ const ChantPages = (props: Props) => {
         return Math.ceil((chants.length / pageLimit))
     }, [pageLimit, chants.length]) 
 
+    // Memoized value of number which the last page will require
     const lastPageChants= useMemo(() => {
         return chants.length % pageLimit || pageLimit
     }, [pageLimit, chants.length])
@@ -48,47 +48,54 @@ const ChantPages = (props: Props) => {
         <>
             <div
             id="chants">
+                {/* Itterate for every page requested */}
                 {Array(pageNumber).fill(0).map((y, i) => 
                     <div 
                     key={i} 
                     id={`page-${i + 1}`}
+                    // If current, show, if not hide
                     className={`${page === i + 1 ? "static": "hidden"}`}>
                         {
-                            Array(i === pageLimit - 1 ? pageLimit - lastPageChants : pageLimit).fill(0)
+                            // Fills pages with chants
+                            // Array for all chants needed in page, unless lastpage
+                            Array(i === pageLimit - 1 ? pageLimit - lastPageChants : pageLimit)
+                                .fill(0)
                                 .map((x, y) => {
 
+                                    // Return sebsequent chant by indexx
                                     const index = ((i + 1) * pageLimit) - (pageLimit - y)
-                                    return chants[index]
+                                    return chants[index] ?? undefined
                                 })
+                                // Filter undefined chants
+                                .filter((chant) => chant != undefined)
                                 .map((chant, i) => {
 
                                     return (
-                                        chant ? 
-                                        chantLinked ?
-                                        <div
-                                        className="hover:cursor-pointer"
-                                        onClick={() => {
-                                            router.replace(`/chant/${chant.id}`)
-                                        }}
-                                        key={i}>
-                                            <Chant
-                                            chant={chant}
-                                            showTags={showTags}
-                                            />
-                                        </div> :
-                                        <div key={i}>
-                                            <Chant
-                                            chant={chant}
-                                            showTags={showTags}
-                                            />
-                                        </div> : 
-                                        <div id="no-chant" key={i}></div>
+                                        // Chant 
+                                        <>
+                                            <div
+                                            className="hover:cursor-pointer"
+                                            
+                                            key={i}>
+                                                <Chant
+                                                chant={chant}
+                                                showTags={showTags}
+                                                chantLinked={chantLinked}
+                                                chantsCollapsed={chantsCollapsed}
+                                                />
+                                            </div> 
+                                            <div 
+                                            className="h-1 bg-gray-300 w-full"
+                                            id="barier"></div>
+                                        </>
                                     )
+                                    
                                 })
                         }
                     </div>
                 )} 
-                {pageNumber < 2 ? 
+                {/* Page selector (if more than 1 page) */}
+                {pageNumber >= 1 ? 
                 <>
                 </> : 
                     <div 
@@ -100,8 +107,12 @@ const ChantPages = (props: Props) => {
                                 className={`mx-2 px-2 py-1 border-2 border-gray-100 
                                 ${page === i + 1 ? "bg-sky-400" : "bg-sky-200"}`}
                                 onClick={() => {
+
+                                    // Set state
                                     setPage(i + 1)
                                 }}>
+
+                                    {/* Page number */}
                                     {i + 1}
                                 </button>
                             )
