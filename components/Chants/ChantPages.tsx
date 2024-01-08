@@ -68,7 +68,7 @@ const ChantPages = (props: Props) => {
                                 })
                                 // Filter undefined chants
                                 .filter((chant) => chant != undefined)
-                                .map((chant, i) => {
+                                .map((chant, z) => {
 
                                     return (
                                         // Chant 
@@ -76,7 +76,7 @@ const ChantPages = (props: Props) => {
                                             <div
                                             className="hover:cursor-pointer"
                                             
-                                            key={i}>
+                                            key={z}>
                                                 <Chant
                                                 chant={chant}
                                                 showTags={showTags}
@@ -85,7 +85,10 @@ const ChantPages = (props: Props) => {
                                                 />
                                             </div> 
                                             <div 
-                                            className="h-1 bg-gray-300 w-full"
+                                            className={`h-1 bg-gray-300 w-full
+                                            ${z + 1 === pageLimit ||
+                                            z + 1 === lastPageChants && i + 1 === pageNumber
+                                            ? "hidden" : ""}`}
                                             id="barier"></div>
                                         </>
                                     )
@@ -95,7 +98,7 @@ const ChantPages = (props: Props) => {
                     </div>
                 )} 
                 {/* Page selector (if more than 1 page) */}
-                {pageNumber >= 1 ? 
+                {pageNumber < 2 ? 
                 <>
                 </> : 
                     <div 
