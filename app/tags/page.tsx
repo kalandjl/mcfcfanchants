@@ -25,7 +25,7 @@ const Page = async () => {
                         href={`/tag/${tag.tag}`}>
                             <div
                             className='w-full'>
-                                {capitalizeEachWord(tag.tag).replace("_"," ")}
+                                {capitalizeEachWord(tag.tag.replaceAll("_", " "))}
                             </div>
                         </Link>
                     </button>
