@@ -6,6 +6,7 @@ import CloudLink from "../CloudLink";
 interface Props {
 
 }
+
 const links = [
     {
         text: "Home",
@@ -43,7 +44,10 @@ const links = [
         text: "Terms of Service",
         link: "/policy/tos",
     },
-    
+    {
+        text: "Contact",
+        link: "/contact"
+    }
 ]
 
 const FooterPages: FC<Props> = (props: Props) => {
