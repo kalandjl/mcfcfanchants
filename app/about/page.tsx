@@ -23,7 +23,7 @@ const Home = () => {
                 or comments you can find me on the contact page.`}
                 <br></br>
                 <br></br>
-                Thanks, Kalan
+                - Kalan
             </p>
         </>
     )
