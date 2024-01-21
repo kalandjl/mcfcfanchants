@@ -10,7 +10,7 @@ interface Props {
 const links = [
     {
         text: "Home",
-        link: "/home",
+        link: "/",
     },
     {
         text: "About",
@@ -55,7 +55,7 @@ const FooterPages: FC<Props> = (props: Props) => {
 
     return (
         <>
-            {links.map((obj, i) => 
+            {links.map((obj, i) =>
                 <CloudLink
                 key={i}
                 href={obj.link}

@@ -9,9 +9,9 @@ interface Props {
 
 const RoutedText: FC<Props> = (props: Props) => {
 
-    let path: string = usePathname().replace('/', '').charAt(0) + usePathname().slice(2).replace('/', ': ').replace('_', ' ')
+    let path: string = usePathname().replace('/', '').charAt(0) + usePathname().slice(2).replace('/', ': ').replaceAll('_', ' ')
     path = capitalizeEachWord(path)
-    
+
     return (
         <>
             {path ? path : "Home"}

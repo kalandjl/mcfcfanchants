@@ -13,7 +13,7 @@ interface Props {
 const templates = {
     "footer": {
         bg: "black",
-        color: "white", 
+        color: "white",
         hover: "sky-400"
     },
     "chant": {
@@ -33,8 +33,8 @@ const CloudLink: FC<Props> = (props: Props) => {
         <>
             <Link
             href={href}>
-                <div 
-                className={classNames(`inline-block  py-1 px-2 mr-1 mb-2 text-sm 
+                <div
+                className={classNames(`inline-block  py-1 px-2 mr-1 mb-2 text-sm
                 font-open-sans font-bold hover:cursor-pointer
                 bg-${bg} text-${color} hover:bg-${hover}`)}>
                     {capitalizeEachWord(text.replaceAll("_", " "))}
