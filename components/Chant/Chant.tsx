@@ -19,10 +19,10 @@ const Chant:FC<Props> = (props: Props) => {
 
     return (
         <>
-            {chant ? 
+            {chant ?
             // Chant
             <div
-            className="grid grid-col-1 gap-1 bg-gray-100 p-3 hover:bg-gray-200 
+            className="grid grid-col-1 gap-1 bg-gray-100 p-3 hover:bg-gray-200
             sm:text-sm md:text-base">
                 {/* Title */}
                 <p
@@ -32,8 +32,8 @@ const Chant:FC<Props> = (props: Props) => {
                     if (chantLinked)
                     router.replace(`/chant/${chant.id}`)
                 }}
-                className={`first-letter font-bold px-3 py-2 bg-sky-300 w-min 
-                whitespace-nowrap 
+                className={`first-letter font-bold px-3 py-2 bg-sky-300 w-min
+                whitespace-nowrap
                 ${chantLinked ? "hover:underline" : ""}`}>
                     {chant.title}
                 </p>
@@ -44,7 +44,7 @@ const Chant:FC<Props> = (props: Props) => {
                     lyrics={chant.lyrics}
                     chantsCollapsed={chantsCollapsed ?? true} />
                     {/* Audio button */}
-                    {chant.audioHref ? 
+                    {chant.audioHref ?
                     <a
                     href={chant.audioHref}
                     target="_blank"
@@ -53,19 +53,26 @@ const Chant:FC<Props> = (props: Props) => {
                     </a> : <></>
                     }
                     {/* Tags */}
-                    {props.showTags ? 
+                    {props.showTags ?
                     <div className="w-1/2 mt-3">
-                        {chant.tags.map((tag, i) => 
-                        <CloudLink 
+                        {chant.tags.map((tag, i) =>
+                        <CloudLink
                         key={i}
                         href={`/tag/${tag}`}
                         text={tag}
                         template="chant"
                         />)}
-                    </div> 
+                    </div>
                     : <></>}
+                    {/* Original Song */}
+                    {chant.reference ?
+                    <p
+                    className="text-md italic font-semibold text-gray-700">
+                        Reference: "{chant.reference}"
+                    </p> :
+                    <></>}
                 </div>
-            </div> : 
+            </div> :
             // Not sufficient data
             <div className="grid">Sorry, couldn&apos;t load chant</div>
             }

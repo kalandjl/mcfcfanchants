@@ -10,10 +10,11 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
     "deploy-user": "firebase deploy --only functions:onNewUser",
-    "deploy-submission": "firebase deploy --only functions:onNewSubmission"
+    "deploy-submission": "firebase deploy --only functions:onNewSubmission",
+    "deploy-delete": "firebase deploy --only functions:onUserDelete"
   },
   "engines": {
-    "node": "18"
+    "node": "16"
   },
   "main": "lib/index.js",
   "dependencies": {

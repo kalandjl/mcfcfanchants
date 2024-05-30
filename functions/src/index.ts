@@ -15,8 +15,13 @@ export const onNewUser = functions.auth.user().onCreate((user: any) => {
 
     admin.firestore().collection("Users").doc(`/${user.uid}/`).create({
         user: JSON.stringify(user),
-        lastReq: timestamp - 10
+        lastReq: timestamp
     })
+})
+
+export const onUserDelete = functions.auth.user().onDelete((user: any) => {
+
+    admin.firestore().collection("Users").doc(user.uid).delete()
 })
 
 exports.onNewSubmission = onDocumentCreated("Submissions/{docId}", (event) => {
@@ -33,7 +38,7 @@ exports.onNewSubmission = onDocumentCreated("Submissions/{docId}", (event) => {
 
     console.log("Data avaliable")
     console.log(JSON.stringify(data, uid))
-    
+
     let timestamp = admin.firestore.FieldValue.serverTimestamp()
 
     admin.firestore().collection("Users").doc(`/${uid}/`).update({

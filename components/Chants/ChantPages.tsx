@@ -17,7 +17,7 @@ interface Props {
 const ChantPages = (props: Props) => {
 
     // Defining params
-    const { chants } = props 
+    const { chants } = props
     const { chantsCollapsed } = props.props
     const showTags  = props.props.showTags ?? false
     const chantLinked = props.props.chantLinked ?? false
@@ -26,7 +26,7 @@ const ChantPages = (props: Props) => {
     // Memoize value of pages numbers
     const pageNumber = useMemo(() => {
         return Math.ceil((chants.length / pageLimit))
-    }, [pageLimit, chants.length]) 
+    }, [pageLimit, chants.length])
 
     // Memoized value of number which the last page will require
     const lastPageChants= useMemo(() => {
@@ -39,7 +39,7 @@ const ChantPages = (props: Props) => {
 
     // Scroll to top of window on page change
     useEffect(() => {
-        
+
         if (pageChanges > 0 && pageNumber > 1) window.scrollTo(0, 200)
         setPageChanges(pageChanges + 1)
     }, [page]);
@@ -49,9 +49,9 @@ const ChantPages = (props: Props) => {
             <div
             id="chants">
                 {/* Itterate for every page requested */}
-                {Array(pageNumber).fill(0).map((y, i) => 
-                    <div 
-                    key={i} 
+                {Array(pageNumber).fill(0).map((y, i) =>
+                    <div
+                    key={i}
                     id={`page-${i + 1}`}
                     // If current, show, if not hide
                     className={`${page === i + 1 ? "static": "hidden"}`}>
@@ -71,11 +71,11 @@ const ChantPages = (props: Props) => {
                                 .map((chant, z) => {
 
                                     return (
-                                        // Chant 
+                                        // Chant
                                         <>
                                             <div
                                             className="hover:cursor-pointer"
-                                            
+
                                             key={z}>
                                                 <Chant
                                                 chant={chant}
@@ -83,8 +83,8 @@ const ChantPages = (props: Props) => {
                                                 chantLinked={chantLinked}
                                                 chantsCollapsed={chantsCollapsed}
                                                 />
-                                            </div> 
-                                            <div 
+                                            </div>
+                                            <div
                                             className={`h-1 bg-gray-300 w-full
                                             ${z + 1 === pageLimit ||
                                             z + 1 === lastPageChants && i + 1 === pageNumber
@@ -92,22 +92,22 @@ const ChantPages = (props: Props) => {
                                             id="barier"></div>
                                         </>
                                     )
-                                    
+
                                 })
                         }
                     </div>
-                )} 
+                )}
                 {/* Page selector (if more than 1 page) */}
-                {pageNumber < 2 ? 
+                {pageNumber < 2 ?
                 <>
-                </> : 
-                    <div 
+                </> :
+                    <div
                     className="flex mt-5">
                         {
-                            Array(pageNumber).fill(0).map((x, i) => 
-                                <button 
+                            Array(pageNumber).fill(0).map((x, i) =>
+                                <button
                                 key={i}
-                                className={`mx-2 px-2 py-1 border-2 border-gray-100 
+                                className={`mx-2 px-2 py-1 border-2 border-gray-100
                                 ${page === i + 1 ? "bg-sky-400" : "bg-sky-200"}`}
                                 onClick={() => {
 
@@ -121,7 +121,7 @@ const ChantPages = (props: Props) => {
                             )
                         }
                     </div>
-                }   
+                }
             </div>
         </>
     )
