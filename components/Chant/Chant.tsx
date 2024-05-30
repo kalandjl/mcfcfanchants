@@ -68,7 +68,7 @@ const Chant:FC<Props> = (props: Props) => {
                     {chant.reference ?
                     <p
                     className="text-md italic font-semibold text-gray-700">
-                        Reference: "{chant.reference}"
+                        Reference: &quot;{chant.reference}&quot;
                     </p> :
                     <></>}
                 </div>
